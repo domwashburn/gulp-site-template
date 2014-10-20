@@ -1,0 +1,348 @@
+<!DOCTYPE HTML>
+<html lang="en" class="no-js" ng-app="portfolioApp">
+<head>
+	<!-- First of all, thanks for caring enough about the quality of my code to check out my source code. I care a lot about my code as well, my goal is to future proof it and make it as extensible as possible. You'll notice some verbose class names, I'm making use of the Block Elelment Modifier method of structuring my CSS; More on that here http://bit.ly/BEM-CSS. There's also a liberal use or the 'rem', those are calculated by a clever, and custom, SCSS function and numbers proveded by modularscale.com. I love exploring new technologies and would LOVE to find a place of work where I can combine my passion for design and development into one glittery full-stack-unicorn package. Are you the company that I can do that with?! -->
+	<title>Home | domwashburn.com</title>
+	<meta name="description" content="My name is Dominick Washburn, I'm a Graphic Designer and Front End Web Developer: this is my portfolio. I have a degree in Graphic Design, Interactive Design and Advertising. I'm searching for a full time job and freelancing until I find one." >
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<!-- stylesheets -->
+	<link rel="stylesheet" href="assets/css/style.css">
+
+	<!-- javascript -->
+	<script src="assets/js/modernizr.js"></script>
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+	<!-- Adobe Typekit -->
+	<script type="text/javascript" src="//use.typekit.net/ufp1vpz.js"></script>
+	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+</head>
+<body ng-controller="portfolioController">
+	<div class="overlay overlay-hugeinc">
+		<nav>
+			<ul class="nav--main">
+				<li class="nav__btn--active" ng-repeat="link in navHome"><a href="{{link.url}}" class="nav__link">{{link.title}}</a></li>
+			</ul>
+		</nav>
+	</div>
+	<header>
+		<div class="content header">
+			<div class="header__group clearfix">
+				<h1>Hey There!</h1>
+				<p><b class="header__paragraph">Hey there welcome to my little slice of the internet. My name is Dominick Washburn, I’m a Graphic Designer and Front End Web Developer. I’m a recent grad making plans for the future... so let’s talk.</b></p>
+				<a href="{{navHome[3].url}}" class="btn btn--orange btn--lrg header__btn">get in touch</a>
+				<a href="{{navHome[1].url}}" class="btn btn--orange btn--lrg header__btn">check out my work</a>
+			</div>
+		</div>
+	</header> 
+	<div id="main-content">
+		<header id="nav-trigger">
+			<div class="content nav-container">
+				@@include('frag.html')
+				<a id="trigger-overlay" class="navicon-button x">
+			      <div class="navicon"></div>
+			    </a>
+			</div>
+		</header>
+		<section id="portfolio">
+			<div class="content">
+				<h2>Portfolio</h2>
+				<div class="thumb-grid">
+					<ul class="thumb-grid__container clearfix">
+						<li class="thumb-grid__grid-item" >
+							<img src="assets/images/thumb--acc-top-40.jpg" alt="American Country Countdown website redesign thumbnail" class="thumb-grid__thumbnail">
+							<a href="portfolio/american-country-countdown.html" class="thumb-grid__overlay">
+								<div class="center__wrap">
+									<hgroup>
+										<h3 class="thumb-grid__title">American Country Countdown</h3>
+									</hgroup>
+								</div>	
+							</a>
+						</li>
+						<li class="thumb-grid__grid-item clearfix">
+							<img src="assets/images/thumb--journey-of-hope.jpg" alt="Journey of Hope website redesign thumbnail" class="thumb-grid__thumbnail">
+							<a href="portfolio/journey-of-hope.html" class="thumb-grid__overlay">
+								<hgroup>
+									<h3 class="thumb-grid__title">Journey of Hope</h3>
+								</hgroup>	
+							</a>
+						</li>
+						<li class="thumb-grid__grid-item clearfix">
+							<img src="assets/images/thumb--third-eye.jpg" alt="Third Eye Incense thumbnail" class="thumb-grid__thumbnail">
+							<a href="portfolio/third-eye-incense.html" class="thumb-grid__overlay">
+								<hgroup>
+									<h3 class="thumb-grid__title">Third Eye Incense</h3>
+								</hgroup>	
+							</a>
+						</li>
+						<li class="thumb-grid__grid-item clearfix">
+							<img src="assets/images/thumb--lyric-poster.jpg" alt="Number Ones and Then Some thumbnail" class="thumb-grid__thumbnail">
+							<a href="portfolio/number-ones.html" class="thumb-grid__overlay">
+								<hgroup>
+									<h3 class="thumb-grid__title">Number Ones and Then Some</h3>
+								</hgroup>	
+							</a>
+						</li>
+						<li class="thumb-grid__grid-item clearfix">
+							<img src="assets/images/thumb--katy-perry.jpg" alt="Katy Perry Teenage Dream art thumbnail" class="thumb-grid__thumbnail">
+							<a href="portfolio/katy-perry.html" class="thumb-grid__overlay">
+								<hgroup>
+									<h3 class="thumb-grid__title">Katy Perry Teenage Dream</h3>
+								</hgroup>	
+							</a>
+						</li>
+						<li class="thumb-grid__grid-item clearfix">
+							<img src="assets/images/thumb--write-brain.jpg" alt="Write Brain social media thumbnail" class="thumb-grid__thumbnail">
+							<a href="portfolio/write-brain.html" class="thumb-grid__overlay">
+								<hgroup>
+									<h3 class="thumb-grid__title">Write Brain</h3>
+								</hgroup>	
+							</a>
+						</li>
+						<li class="thumb-grid__grid-item clearfix">
+							<img src="assets/images/thumb--annual-report.jpg" alt="Northern Arizona University Annual Report thumbnail" class="thumb-grid__thumbnail">
+							<a href="portfolio/annual-report.html" class="thumb-grid__overlay">
+								<hgroup>
+									<h3 class="thumb-grid__title">Annual report</h3>
+								</hgroup>	
+							</a>
+						</li>
+						<li class="thumb-grid__grid-item clearfix">
+							<img src="assets/images/thumb--firebird.jpg" alt="Firebird Trading Company thumbnail" class="thumb-grid__thumbnail">
+							<a href="portfolio/firebird-trading-co.html" class="thumb-grid__overlay">
+								<hgroup>
+									<h3 class="thumb-grid__title">Firebird Trading Company</h3>
+								</hgroup>	
+							</a>
+						</li>
+						<li class="thumb-grid__grid-item clearfix">
+							<img src="assets/images/thumb--numbers-app.jpg" alt="Numbers App thumbnail" class="thumb-grid__thumbnail">
+							<a href="portfolio/numbers-app.html" class="thumb-grid__overlay">
+								<hgroup>
+									<h3 class="thumb-grid__title">Numbers App</h3>
+								</hgroup>	
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</section>
+		<section id="about" class="grid">
+			<div class="content">
+				<h2>About</h2>
+				<article class="col-2-3">
+					<p>Well hello! Thanks for taking time to visit my portfolio site. Let's start with the basics. My name is Dominick Washburn, I'm a Graphic Designer and Interactive Designer from Tucson, Arizona. I graduated from Northern Arizona University with a degree in Visual Communications and a minor in Advertising.</p>
+					<p>I'm curious and I love exploring new technologies and I would like to be a part of a team where I can learn and grow as well as much as I contribute to the team. I may have graduated, but there's still more to learn. Currently I'm working on learning more about Node.JS, Angular.JS, and Ruby for no other reason than to challenge myself and keep my skills sharp.</p>
+					<p>So, that's all great stuff right? Right. But you're looking for the perfect fit for your project or your team; I know that means more than sheer technical ability. Design and development are big parts of my life because they feed my desire to continue learning but one of my many passions is music. I've been writing songs since March 2013. I also love tea, trying new recipes and getting lost on pinterest.</p>
+					<p>Like what you see? Maybe you’d like to know more?? Go ahead and get in touch with me with the contact form below!</p>
+					<h6>Guess what? I developed this site from scratch!</h6>
+					<a href="https://bitbucket.org/dwashburn" target="blank" class="btn--med--orange">check out my bitbucket</a>
+				</article>
+				<asside class="col-1-3 asside--right">
+					<h4>skills</h4>
+					<div class="responsive-columns">
+						<p class="meter__label">Graphic Design</p>
+						<div class="meter__container">
+							<div class="meter__progress--90 meter--orange">
+							</div>
+						</div>
+						<p class="meter__label">Web Design</p>
+						<div class="meter__container">
+							<div class="meter__progress--90 meter--orange">
+							</div>
+						</div>
+						<p class="meter__label">Illustration</p>
+						<div class="meter__container">
+							<div class="meter__progress--80 meter--orange">
+							</div>
+						</div>
+						<p class="meter__label">InDesign</p>
+						<div class="meter__container">
+							<div class="meter__progress--85 meter--orange">
+							</div>
+						</div>
+						<p class="meter__label">Illustrator</p>
+						<div class="meter__container">
+							<div class="meter__progress--90 meter--orange">
+							</div>
+						</div>
+					</div>
+						<div class="responsive-columns">
+							<p class="meter__label">Photoshop</p>
+						<div class="meter__container">
+							<div class="meter__progress--90 meter--orange">
+							</div>
+						</div>
+						<p class="meter__label">HTML</p>
+						<div class="meter__container">
+							<div class="meter__progress--90 meter--orange">
+							</div>
+						</div>
+						<p class="meter__label">CSS/SCSS</p>
+						<div class="meter__container">
+							<div class="meter__progress--90 meter--orange">
+							</div>
+						</div>
+						<p class="meter__label">Javascript</p>
+						<div class="meter__container">
+							<div class="meter__progress--75 meter--orange">
+							</div>
+						</div>
+						<p class="meter__label">GIT</p>
+						<div class="meter__container">
+							<div class="meter__progress--85 meter--orange">
+							</div>
+						</div>
+					</div>
+				</asside>
+			</div>
+		</section>
+		<section id="contact" class="grid">
+			<div class="content">
+				<h2>Contact</h2>
+				<div class="col-1-3">
+					<p>You can use the form to get in touch with me via email. It will go straight to my phone so my response time should be very fast. If you would prefer to call or text message me, I’ve listed my phone number below. I’ve also provided a link to my Linked In profile.</p>
+					<p>phone: 520 906 9760</p>
+					<p>Linked In: <a href="http://bit.ly/domwashburn-li" target="blank">bit.ly/domwashburn-li</a></p>
+				</div>
+				<div class="col-2-3">
+					<h4>Just fill out the form to get in touch</h4>
+					<form class="form" name="contactForm" action="contact-form.php" method="post">
+						<noscript>
+								<p><input class="form__field" type="hidden" name="nojs" id="nojs" /></p>
+						</noscript>
+						<label class="form__label" for="firstname">First name (required)</label>
+						<input class="form__field" type="text" id="firstname" name="firstname" />
+						<label class="form__label" for="lastname">Last name (required)</label>
+						<input class="form__field" type="text" id="lastname" name="lastname" />
+						<label class="form__label" for="email">email address (required)</label>
+						<input class="form__field" type="text" id="email" name="email" />
+						<label class="form__label" for="comment">Comment (required)</label>
+						<textarea class="form__field" type="text" id="comment" name="comment"></textarea>
+						<input class="form__btn" type="submit" name="submit" id="submit" value="Send" />
+
+					</form>
+				</div>
+			</div>
+		</section>
+	</div>
+	<footer>
+	</footer>
+
+	<!-- All scripts except modernizer concatenated and minified  -->
+	<script src="assets/js/angular.min.js"></script>
+	<!--<script src="assets/js/portfolioApp.js"></script>-->
+	<script src="assets/js/portfolioController.js"></script>
+	<script src="assets/js/scripts.min.js"></script>
+	
+	
+	<script>
+		$( function()
+		{
+			var activityIndicatorOn = function()
+				{
+					$( '<div id="imagelightbox-loading"><div></div></div>' ).appendTo( 'body' );
+				},
+				activityIndicatorOff = function()
+				{
+					$( '#imagelightbox-loading' ).remove();
+				},
+
+				overlayOn = function()
+				{
+					$( '<div id="imagelightbox__overlay"></div>' ).appendTo( 'body' );
+				},
+				overlayOff = function()
+				{
+					$( '#imagelightbox__overlay' ).remove();
+				},
+
+				closeButtonOn = function( instance )
+				{
+					$( '<a href="#" id="imagelightbox-close">Close</a>' ).appendTo( 'body' ).on( 'click touchend', function(){ $( this ).remove(); instance.quitImageLightbox(); return false; });
+				},
+				closeButtonOff = function()
+				{
+					$( '#imagelightbox-close' ).remove();
+				},
+
+				captionOn = function()
+				{
+					var description = $( 'a[href="' + $( '#imagelightbox' ).attr( 'src' ) + '"] img' ).attr( 'alt' );
+					if( description.length > 0 )
+						$( '<div id="imagelightbox-caption">' + description + '</div>' ).appendTo( 'body' );
+				},
+				captionOff = function()
+				{
+					$( '#imagelightbox-caption' ).remove();
+				},
+
+				navigationOn = function( instance, selector )
+				{
+					var images = $( selector );
+					if( images.length )
+					{
+						var nav = $( '<div id="imagelightbox-nav"></div>' );
+						for( var i = 0; i < images.length; i++ )
+							nav.append( '<a href="#"></a>' );
+
+						nav.appendTo( 'body' );
+						nav.on( 'click touchend', function(){ return false; });
+
+						var navItems = nav.find( 'a' );
+						navItems.on( 'click touchend', function()
+						{
+							var $this = $( this );
+							if( images.eq( $this.index() ).attr( 'href' ) != $( '#imagelightbox' ).attr( 'src' ) )
+								instance.switchImageLightbox( $this.index() );
+
+							navItems.removeClass( 'active' );
+							navItems.eq( $this.index() ).addClass( 'active' );
+
+							return false;
+						})
+						.on( 'touchend', function(){ return false; });
+					}
+				},
+				navigationUpdate = function( selector )
+				{
+					var items = $( '#imagelightbox-nav a' );
+					items.removeClass( 'active' );
+					items.eq( $( selector ).filter( '[href="' + $( '#imagelightbox' ).attr( 'src' ) + '"]' ).index( selector ) ).addClass( 'active' );
+				},
+				navigationOff = function()
+				{
+					$( '#imagelightbox-nav' ).remove();
+				};
+
+
+			//	WITH ACTIVITY INDICATION
+			var selectorA = 'a';
+			var instanceA = $( selectorA ).imageLightbox(
+			{
+				onStart:	 function() { navigationOn( instanceA, selectorA ); overlayOn(); },
+				onEnd:		 function() { navigationOff(); activityIndicatorOff(); overlayOff(); },
+				onLoadStart: function() { activityIndicatorOn(); },
+				onLoadEnd:	 function() { navigationUpdate( selectorA ); activityIndicatorOff(); }
+			});
+
+		});
+	</script>
+	<script>
+		window.addEventListener('load', function() {
+		    new FastClick(document.body);
+		}, false);
+	</script>
+	<script>
+		$("#nav-trigger").stick_in_parent();
+	</script>
+	<script>
+	    $(document).ready(function(){
+	        $('.slider').slick({
+	            slide: "li"
+	        });
+	    });
+	</script>
+</body>
+</html>

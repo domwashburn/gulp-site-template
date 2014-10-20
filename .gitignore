@@ -1,0 +1,28 @@
+#Ignore SASS Cache
+.sass-cache
+
+#Let's ignore all the madness that gulp.js generates, shall we?
+build
+node_modules
+bower_components
+
+#ignore sublime-text generated files
+*.sublime-project
+*.sublime-workspace
+
+# For the love of God and all that is holy, please ignore my design and SEO files
+design
+Design
+_SEO
+_seo
+
+#Misc Ignores
+_DEV
+*.numbers
+*.xls
+*.pages
+*.doc
+*.psd
+*.sublime-project
+*.sublime-workspace 
+plunkr-edit.html

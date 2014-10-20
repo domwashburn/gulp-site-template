@@ -1,0 +1,12 @@
+/* determine rem value for functions */
+$rem-base: 16;
+
+/* rem Function */
+@function rem($px: 16) {
+    @return ($px/$rem-base)+rem;
+}
+
+/* rem Line Height */
+@function rem-lh($px: $rem-base, $scale: 1.5) {
+    @return ( ($px / $rem-base) * $scale ) + rem;
+}
