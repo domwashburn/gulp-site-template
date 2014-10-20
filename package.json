@@ -1,6 +1,6 @@
 {
   "name": "Harland-Clarke-Holdings-Company-Front-End-Development-Dependencies",
-  "version": "0.0.0",
+  "version": "1.0",
   "description": "This is the file for loading all the dependencies for the Harland Clarke Gulp.js workflow.",
   "readme": "Please do not alter this file without expressed permission. When this document is edited it should be committed to the local repo and pushed to the origin. When installing packages use the comand line prompt 'npm install <name> --save-dev'.",
   "repository": "http://www.bitbucket.org/dwashburn/hchc-master-dev-template",
