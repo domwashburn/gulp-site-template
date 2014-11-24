@@ -24,17 +24,16 @@ FILE DESTINATIONS (RELATIVE TO ASSSETS FOLDER)
 
 var target = {
     html : [{
-        src : './templates/*.tpl.html',
-        dest : './',
-        watch : './**/*.html'
+        'src' : './templates/*.tpl.html',
+        'basepath' : './html-fragments/',
+        'dest' : './',
+        'watch' : './**/*.html'
     }],
     sass : [{
-        src : './assets/scss/**/*.scss',
-        dest : './assets/css',
-        watch : './assets/css/*.css'
+        'src' : './assets/scss/**/**/*.scss',
+        'dest' : './assets/css',
+        'watch' : './assets/css/*.css'
     }],
-    sass_src : './assets/scss/*.scss',                        // all sass files
-    css_dest : './assets/css',                                // where to put minified css
     js_lint_src : [                                         // all js that should be linted
         'js/build/app.js',
         'js/build/custom/switch.js',
@@ -54,9 +53,9 @@ var target = {
 HTML TASKS
 *******************************************************************************/
 gulp.task('fileinclude', function() {
-    gulp.src('./templates/*.tpl.html')
+    gulp.src('target.html.src')
     .pipe(fileinclude({
-        basepath : './html-fragments/'
+        basepath : 'target.html.basepath'
     }))
     .pipe(rename({
         extname : ""
@@ -64,7 +63,7 @@ gulp.task('fileinclude', function() {
     .pipe(rename({
         extname : ".html"
     }))
-    .pipe(gulp.dest('./'));
+    .pipe(gulp.dest('target.html.dest'));
 });
 
 /*******************************************************************************
@@ -72,10 +71,10 @@ SASS TASK
 *******************************************************************************/
 
 gulp.task('sass', function() {
-    gulp.src('target.sass.src')                           // get the files
+    return gulp.src('target.sass.src')                           // get the files
         .pipe(plumber())                                // make sure gulp keeps running on errors
-        .pipe(compass())								//compile all compass
-        .pipe(sass())                                   // compile all sass
+        .pipe(compass())								
+        //.pipe(sass())                                   // compile all sass
         .pipe(autoprefixer(                             // complete css with correct vendor prefixes
             'last 2 version',
             '> 1%',
@@ -90,11 +89,13 @@ gulp.task('sass', function() {
 });
 
 gulp.task('compass', function() {
-    gulp.src('target.sass.src')
+    return gulp.src('target.sass.src')
         .pipe(compass({
-            config_file: './config.rb',
-            css: 'assets/css',
-            sass: 'assets/scss'
+            config_file: 'config.rb',
+            sourcemap: true,
+            debug : true,
+            css: 'target.sass.dest',
+            sass: 'target.sass.src'
         }))
         .pipe(gulp.dest('target.sass.dest'))
         .pipe(notify({ message: 'Compass processed!'}));     // notify when done
@@ -152,9 +153,9 @@ GULP TASKS
 *******************************************************************************/
 
 gulp.task('default', function() {
-    gulp.run(/*'fileinclude',*/ 'sass', 'js-lint', 'js-uglify', 'js-concat', 'browser-sync');
+    gulp.run(/*'fileinclude',*/ 'compass', 'js-lint', 'js-uglify', 'js-concat', 'browser-sync');
     gulp.watch('./assets/scss/**/*.scss', function() {
-        gulp.run('compass', 'sass');
+        gulp.run('compass');
     });
     gulp.watch('./**/*.html', function() {
         /*gulp.run('fileinclude');*/
