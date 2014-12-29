@@ -90,6 +90,7 @@ gulp.task('sass', function() {
 
 gulp.task('compass', function() {
     return gulp.src('target.sass.src')
+    return gulp.src('assets/scss/style.scss')
         .pipe(compass({
             config_file: 'config.rb',
             sourcemap: true,
