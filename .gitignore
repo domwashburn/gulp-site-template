@@ -18,6 +18,7 @@ _seo
 
 #Misc Ignores
 _DEV
+*.log
 *.numbers
 *.xls
 *.pages
