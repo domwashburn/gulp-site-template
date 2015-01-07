@@ -54,12 +54,13 @@ var target = {
 HTML TASKS
 *******************************************************************************/
 gulp.task('fileinclude', function() {
-    gulp.src('target.html.src')
+    gulp.src('./html-templates/*.tpl.html')
     .pipe(fileinclude({
-        basepath : 'target.html.basepath'
+        prefix: '@@',
+        basepath : './html-templates/html-fragments/'
     }))
     .pipe(rename({
-        extname : ""
+        extname : ''
     }))
     .pipe(rename({
         extname : ".html"
