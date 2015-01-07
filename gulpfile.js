@@ -162,13 +162,12 @@ GULP TASKS
 *******************************************************************************/
 
 gulp.task('default', function() {
-    gulp.run(/*'fileinclude',*/ 'compass', 'js-lint', 'js-uglify', 'js-concat', 'browser-sync');
     gulp.run('fileinclude', 'prettify', 'compass', 'js-lint', 'js-uglify', 'js-concat', 'browser-sync');
     gulp.watch('./assets/scss/**/*.scss', function() {
         gulp.run('compass');
     });
     gulp.watch('./**/*.html', function() {
-        /*gulp.run('fileinclude');*/
+        gulp.run('fileinclude');
         //gulp.run('prettify');
     });
     gulp.watch(target.js_lint_src, function() {
