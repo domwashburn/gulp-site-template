@@ -25,8 +25,8 @@ FILE DESTINATIONS (RELATIVE TO ASSSETS FOLDER)
 
 var target = {
     html : [{
-        'src' : './templates/*.tpl.html',
-        'basepath' : './html-fragments/',
+        'src' : './html-templates/*.tpl.html',
+        'fragments' : './html-templates/html-fragments/',
         'dest' : './',
         'watch' : './**/*.html'
     }],
