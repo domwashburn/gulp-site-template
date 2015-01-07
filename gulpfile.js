@@ -6,6 +6,7 @@ var gulp = require('gulp'),                             // gulp core
     sass = require('gulp-sass'),                        // sass compiler
     compass = require('gulp-compass'),					// compass compiler
     uglify = require('gulp-uglify'),                    // uglifies the js
+    prettify = require('gulp-prettify'),                // formats the HTML 
     jshint = require('gulp-jshint'),                    // check if js is ok
     rename = require("gulp-rename"),                    // rename files
     concat = require('gulp-concat'),                    // concatinate js
@@ -63,6 +64,13 @@ gulp.task('fileinclude', function() {
     .pipe(rename({
         extname : ".html"
     }))
+    .pipe(prettify({indent_size: 4}))
+    .pipe(gulp.dest('./'));
+});
+
+gulp.task('prettify', function() {
+    gulp.src('target.html.watch')
+    .pipe(prettify({indent_inner_html: true}))
     .pipe(gulp.dest('target.html.dest'));
 });
 
@@ -155,11 +163,13 @@ GULP TASKS
 
 gulp.task('default', function() {
     gulp.run(/*'fileinclude',*/ 'compass', 'js-lint', 'js-uglify', 'js-concat', 'browser-sync');
+    gulp.run('fileinclude', 'prettify', 'compass', 'js-lint', 'js-uglify', 'js-concat', 'browser-sync');
     gulp.watch('./assets/scss/**/*.scss', function() {
         gulp.run('compass');
     });
     gulp.watch('./**/*.html', function() {
         /*gulp.run('fileinclude');*/
+        //gulp.run('prettify');
     });
     gulp.watch(target.js_lint_src, function() {
         gulp.run('js-lint');
