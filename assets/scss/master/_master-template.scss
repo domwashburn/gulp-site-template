@@ -1,24 +1,15 @@
-@import "reset-normalize";
+@import "base/reset-normalize";
 @import "compass/css3";
 @import "breakpoint";
-@import "functions";
-@import "variables";
-@import "mixins";
+@import "helpers/functions";
+@import "helpers/variables";
+@import "helpers/mixins";
 
-/* PAGE LAYOUT */
-@import "vendors/*";
-@import "structure";
-@import "simplegrid";
-@import "typography";
-@import "animations";
+// PAGE LAYOUT
+// @import "vendors/*";
+@import "layout/structure";
+@import "base/typography";
+@import "base/animations";
 
-/* HEADER */
-@import "header";
-/* NAVIGATION */
-@import "navigation";
-/* CONTENT */
-@import "content";
-/* FOOTER */
-@import "footer";
-
-/* MODULES */
+// element styles
+@import "elements/buttons";

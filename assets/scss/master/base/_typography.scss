@@ -1,7 +1,8 @@
 /* 
-Modular Scale: 
+Modular Scale:  
 http://modularscale.com/scale/?px1=16&px2=&ra1=1.2&ra2=0
 */
+
 /* Font Sizing */
 html {
 	font-size: 100%;
@@ -88,28 +89,3 @@ p, i, b, em, strong, a, ol, ul, li, dl, dt, dd, figure, figcaption  {
 .text-center {
 	text-align: center;
 }
-
-.btn {
-	border: 2px solid;
-	border-radius: .75rem;
-	box-sizing: border-box;
-	display: inline-block;
-	text-decoration: none;
-	text-transform: lowercase;
-	&:hover, &:active {
-		text-decoration: none;
-	}
-}
-
-.btn--full {
-	@extend .btn;
-	display: block;
-	text-align: center;
-	width: 100%;
-}
-
-@include btn-sizing("btn--sm", 16);
-@include btn-sizing("btn--med", 19.2);
-@include btn-sizing("btn--lrg", 23.04);
-
-@include btn("orange", $primary-color);
