@@ -1,12 +1,14 @@
 @import "base/reset-normalize";
 @import "compass/css3";
 @import "breakpoint";
+@import "helpers/defaults";
+@import "../theme/theme-defaults";
 @import "helpers/functions";
-@import "helpers/variables";
 @import "helpers/mixins";
 
 // PAGE LAYOUT
 // @import "vendors/*";
+@import "base/grid";
 @import "layout/structure";
 @import "base/typography";
 @import "base/animations";
