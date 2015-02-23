@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-</head>
-<body>
-	@@include('frag.html', {
-		"title" : "woah"
-	})
+
+<head> @@include('head.html', { "doc-title" : "title", "main-style" : "./assets/css/style.css" }) </head>
+
+<body> @@include('header.html', { "heading" : "header" })
+    <div>
+        <h2>body</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe eaque ratione, voluptates labore explicabo accusamus enim incidunt, deserunt rem excepturi totam. Esse rem, magnam non necessitatibus error quod, laudantium. Sit.</p> 
+        <a href="#" class="btn--primary">yes</a>
+    </div>
+    @@include('footer.html', { "heading" : "footer" })    
 </body>
+
 </html>
