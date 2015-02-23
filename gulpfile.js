@@ -89,7 +89,7 @@ gulp.task('sass', function() {
     return gulp.src(appFiles.styles)                           // get the files
     .pipe(plugins.plumber())
     .pipe(plugins.compass({
-            config_file: './config.rb',
+            config_file: 'config.rb',
             // project: basePaths.src,
             css: 'css',
             sass: 'scss',
@@ -148,9 +148,9 @@ gulp.task('browser-sync', function() {
 
 /* GULP TASKS */
 gulp.task('watch', function (){
-    gulp.watch(appFiles.styles, ['sass']);
+    gulp.watch([appFiles.styles], ['sass']);
     gulp.watch([watchAppFiles.html, appFiles.html], ['fileinclude', 'prettify']);
-    gulp.watch(watchAppFiles.scripts, ['js-lint', 'js-concat']);
+    gulp.watch([watchAppFiles.scripts], ['js-lint', 'js-concat']);
 });
 
 gulp.task('default', ['watch', 'fileinclude', 'prettify', 'sass', 'js-concat', 'browser-sync']);

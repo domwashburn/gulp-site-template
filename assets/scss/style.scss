@@ -2,5 +2,6 @@
 @import "theme/brand-theme";
 
 body {
-	background-color: rgba(84, 224, 121, 0.72);
+	background-color: rgba(124, 255, 80, 0.72);
+	@include border-radius();
 }
