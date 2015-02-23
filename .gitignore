@@ -9,6 +9,7 @@ bower_components
 #ignore sublime-text generated files
 *.sublime-project
 *.sublime-workspace
+*.cache
 
 # For the love of God and all that is holy, please ignore my design and SEO files
 design
