@@ -1,7 +1,269 @@
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dom\/Documents\/_DEV\/master-dev-template\/assets\/scss\/style\.scss}line{font-family:\000034}}
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline; }
+
+html {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle; }
+
+q, blockquote {
+  quotes: none; }
+
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none; }
+
+a img {
+  border: none; }
+
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block; }
+
+/* determine rem value for functions */
+/* rem Function */
+/* rem Line Height */
+/* Breakpoint Variables */
+/* Masonry Dimension Variables */
+/* Site Colors */
+@viewport {
+  width: device-width; }
+
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0; }
+
+/* IE6 */
+* html .clearfix {
+  zoom: 1; }
+
+/* IE7 */
+*:first-child + html .clearfix {
+  zoom: 1; }
+
+section {
+  padding-bottom: 2.48838rem; }
+
+.content {
+  margin: 0 auto;
+  max-width: 1020px;
+  min-width: 0;
+  overflow-x: hidden;
+  padding: 0 1.44rem;
+  height: auto; }
+
+.asside--right {
+  padding: 0; }
+
+@media (min-width: 768px) {
+  .asside--right {
+    padding-left: 1.44rem; } }
+
+.asside--left {
+  padding: 0; }
+
+@media (min-width: 768px) {
+  .asside--left {
+    padding-right: 1.44rem; } }
+
+* .responsive-columns:lastchild {
+  margin-right: 0; }
+
+.responsive-columns {
+  float: left;
+  vertical-align: top;
+  position: relative;
+  width: 100%; }
+
+@media (min-width: 550px) {
+  .responsive-columns {
+    width: 47.2%;
+    margin: 0 2.4% 2.4% 0; } }
+
+@media (min-width: 769px) {
+  .responsive-columns {
+    width: 100%; } }
+
+/* 
+Modular Scale:  
+http://modularscale.com/scale/?px1=16&px2=&ra1=1.2&ra2=0
+*/
+/* Font Sizing */
+html {
+  font-size: 100%; }
+
 body {
-  background-color: rgba(124, 255, 80, 0.72);
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
+  color: #3d3d3d;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 100;
+  font-family: "museo-sans", sans-serif; }
+
+::selection {
+  background: #34d9e8;
+  color: white; }
+
+::-moz-selection {
+  background: #34d9e8;
+  color: white; }
+
+.icon-arrow-right:before {
+  content: "\e600"; }
+
+.icon-arrow-left:before {
+  content: "\e601"; }
+
+h1 {
+  font-family: "ff-good-headline-web-pro-con", sans-serif;
+  font-size: 7.451rem;
+  text-transform: uppercase; }
+
+h2 {
+  font-size: 3.58325rem;
+  /* 57.332px */
+  margin: 2.40078rem 0 1.18247rem 0;
+  font-style: normal;
+  font-weight: 300; }
+
+h3 {
+  font-family: "ff-good-headline-web-pro-con", sans-serif;
+  font-size: 2.48838rem;
+  line-height: 2.3rem;
+  margin: 1.66721rem 0 0.82116rem 0;
+  text-transform: uppercase; }
+
+h4 {
+  font-size: 2.07362rem;
+  margin: 1.38933rem 0 0.6843rem 0; }
+
+h5 {
+  font-size: 1.728rem;
+  margin: 1.15927rem 0 0.57098rem 0; }
+
+h6 {
+  font-size: 1.44rem;
+  margin: 0.9648rem 0 0.4752rem 0;
+  font-weight: 300; }
+
+.small-label {
+  font-size: 1rem;
+  font-weight: 300;
+  margin: 0.67rem 0 0.33rem 0; }
+
+a {
+  text-decoration: none; }
+
+p, i, b, em, strong, a, ol, ul, li, dl, dt, dd, figure, figcaption {
+  color: #3d3d3d;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  margin: 0.72rem 0 0.72rem 0; }
+
+.text-center {
+  text-align: center; }
+
+.btn, .btn--sm, .btn--primary--sm, .btn--secondary--sm, .btn--med, .btn--primary--med, .btn--secondary--med, .btn--lrg, .btn--primary--lrg, .btn--secondary--lrg {
+  border: 1px solid;
+  border-radius: 3px;
+  border-radius: 0.1875rem;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  display: inline-block;
+  text-decoration: none; }
+
+.btn:hover, .btn--sm:hover, .btn--primary--sm:hover, .btn--secondary--sm:hover, .btn--med:hover, .btn--primary--med:hover, .btn--secondary--med:hover, .btn--lrg:hover, .btn--primary--lrg:hover, .btn--secondary--lrg:hover, .btn:active, .btn--sm:active, .btn--primary--sm:active, .btn--secondary--sm:active, .btn--med:active, .btn--primary--med:active, .btn--secondary--med:active, .btn--lrg:active, .btn--primary--lrg:active, .btn--secondary--lrg:active {
+  text-decoration: none; }
+
+.btn--primary, .btn--primary--sm, .btn--primary--med, .btn--primary--lrg {
+  border-color: #f6871f;
+  color: #f6871f; }
+
+.btn--primary:hover, .btn--primary--sm:hover, .btn--primary--med:hover, .btn--primary--lrg:hover {
+  border-color: #d96e09;
+  background-color: #fbc99a;
+  color: #d96e09; }
+
+.btn--primary:active, .btn--primary--sm:active, .btn--primary--med:active, .btn--primary--lrg:active {
+  border-color: #c16108; }
+
+.btn--sm, .btn--primary--sm, .btn--secondary--sm {
+  font-size: 16px;
+  font-size: 1rem;
+  padding: 8px 12px;
+  padding: 0.5rem 0.75rem; }
+
+.btn--med, .btn--primary--med, .btn--secondary--med {
+  font-size: 20px;
+  font-size: 1.25rem;
+  padding: 10px 15px;
+  padding: 0.625rem 0.9375rem; }
+
+.btn--lrg, .btn--primary--lrg, .btn--secondary--lrg {
+  font-size: 24px;
+  font-size: 1.5rem;
+  padding: 12px 18px;
+  padding: 0.75rem 1.125rem; }
+
+.btn, .btn--sm, .btn--primary--sm, .btn--secondary--sm, .btn--med, .btn--primary--med, .btn--secondary--med, .btn--lrg, .btn--primary--lrg, .btn--secondary--lrg {
+  border: 1px solid;
   border-radius: 5px;
-}
+  border-radius: 0.3125rem;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  display: inline-block;
+  text-decoration: none; }
+
+.btn:hover, .btn--sm:hover, .btn--primary--sm:hover, .btn--secondary--sm:hover, .btn--med:hover, .btn--primary--med:hover, .btn--secondary--med:hover, .btn--lrg:hover, .btn--primary--lrg:hover, .btn--secondary--lrg:hover, .btn:active, .btn--sm:active, .btn--primary--sm:active, .btn--secondary--sm:active, .btn--med:active, .btn--primary--med:active, .btn--secondary--med:active, .btn--lrg:active, .btn--primary--lrg:active, .btn--secondary--lrg:active {
+  text-decoration: none; }
+
+.btn--secondary, .btn--secondary--sm, .btn--secondary--med, .btn--secondary--lrg {
+  border-color: #45fe00;
+  color: #45fe00; }
+
+.btn--secondary:hover, .btn--secondary--sm:hover, .btn--secondary--med:hover, .btn--secondary--lrg:hover {
+  border-color: #37cb00;
+  background-color: #a1ff7f;
+  color: #37cb00; }
+
+.btn--secondary:active, .btn--secondary--sm:active, .btn--secondary--med:active, .btn--secondary--lrg:active {
+  border-color: #30b200; }
+
+.btn--sm, .btn--primary--sm, .btn--secondary--sm {
+  font-size: 16px;
+  font-size: 1rem;
+  padding: 8px 12px;
+  padding: 0.5rem 0.75rem; }
+
+.btn--med, .btn--primary--med, .btn--secondary--med {
+  font-size: 20px;
+  font-size: 1.25rem;
+  padding: 10px 15px;
+  padding: 0.625rem 0.9375rem; }
+
+.btn--lrg, .btn--primary--lrg, .btn--secondary--lrg {
+  font-size: 24px;
+  font-size: 1.5rem;
+  padding: 12px 18px;
+  padding: 0.75rem 1.125rem; }
+
+/*# sourceMappingURL=style.css.map */

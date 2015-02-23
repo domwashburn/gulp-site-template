@@ -311,7 +311,7 @@
 }
 }
 
-/* @mixin btn ($class, $color, $hover-text: $light-text-color) {
+ @mixin btn--old ($class, $color, $hover-text: $light-text-color) {
     .#{"btn--" + $class } {
         border-color: $color;
         color: $color;
@@ -331,13 +331,13 @@
                 @extend #{".btn--" + $this-size}, #{".btn--" + $class};
             }
         }
-    } */
+    }
 
 @mixin btn ($class, $color, $text-color: $color, $border-color: $color, $border-size: 1px, $display: inline-block, $hover-text: null, $text-decoration: none, $text-transform: null, $radius: null) {
   .btn {
     border: $border-size solid;
     border-radius: $radius + px;
-      border-radius: rem($radius);
+    border-radius: rem($radius);
     box-sizing: border-box;
     display: $display;
       text-decoration: $text-decoration;
