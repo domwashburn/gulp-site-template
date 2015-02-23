@@ -1,48 +1,59 @@
-/*******************************************************************************
-DEPENDENCIES
-*******************************************************************************/
+/* DEPENDENCIES */
 
-var gulp = require('gulp'),                             // gulp core
-    sass = require('gulp-sass'),                        // sass compiler
-    compass = require('gulp-compass'),					// compass compiler
-    uglify = require('gulp-uglify'),                    // uglifies the js
-    prettify = require('gulp-prettify'),                // formats the HTML 
-    jshint = require('gulp-jshint'),                    // check if js is ok
-    rename = require("gulp-rename"),                    // rename files
-    concat = require('gulp-concat'),                    // concatinate js
-    notify = require('gulp-notify'),                    // send notifications to osx
-    plumber = require('gulp-plumber'),                  // disable interuption
-    stylish = require('jshint-stylish'),                // make errors look good in shell
-    minifycss = require('gulp-minify-css'),             // minify the css files
-    fileinclude = require('gulp-file-include'),         // build html files by including files
-    browserSync = require('browser-sync'),              // inject code to all devices
-    autoprefixer = require('gulp-autoprefixer');        // sets missing browserprefixes
+var gulp = require('gulp'),
+    stylish = require('jshint-stylish'),
+    compass = require('compass'),
+    browserSync = require('browser-sync');
+
+var plugins = require('gulp-load-plugins')(); 
 
 
-/*******************************************************************************
-FILE DESTINATIONS (RELATIVE TO ASSSETS FOLDER)
-*******************************************************************************/
+/* FILE DESTINATIONS (RELATIVE TO ASSSETS FOLDER) */
+var basePaths = {
+    root: './',
+    src: './assets/',
+    dest: './assets/'
+};
+var paths = {
+    html: {
+        src: basePaths.root + 'html-templates/',
+        fragments: basePaths.root + 'html-templates/html-fragments/',
+        dest: basePaths.root
+    },
+    images: {
+        src: basePaths.src + 'images/',
+        dest: basePaths.dest + 'images/min/'
+    },
+    scripts: {
+        src: basePaths.src + 'scripts/',
+        concat: basePaths.src + 'scripts/_concat/',
+        dest: basePaths.dest + 'scripts/'
+    },
+    styles: {
+        src: basePaths.src + 'scss/',
+        dest: basePaths.dest + 'css/'
+    }
+};
+var appFiles = {
+    html: paths.html.src + '*.tpl.html',
+    styles: paths.styles.src + '**/**/*.scss',
+    scripts: [paths.scripts.src + '**/*.js']
+};
+var watchAppFiles = {
+    html: paths.html.dest + '*.html',
+    styles: paths.styles.dest + '*.css',
+    scripts: [paths.scripts.dest + '**/*.js']
+}
+
 
 var target = {
-    html : [{
-        'src' : './html-templates/*.tpl.html',
-        'fragments' : './html-templates/html-fragments/',
-        'dest' : './',
-        'watch' : './**/*.html'
-    }],
-    sass : [{
-        'src' : './assets/scss/**/**/*.scss',
-        'dest' : './assets/css',
-        'watch' : './assets/css/*.css'
-    }],
     js_lint_src : [                                         // all js that should be linted
         'js/build/app.js',
         'js/build/custom/switch.js',
         'js/build/custom/scheme-loader.js'
     ],
     js_uglify_src : [                                   // all js files that should not be concatinated
-        './assets/scripts/scheme-loader.js',
-        './assets/scripts/modernizr.js'
+        './assets/scripts/scheme-loader.js'
     ],
     js_concat_src : [                                   // all js files that should be concatinated
         './assets/scripts/_concat/*.js'
@@ -50,106 +61,83 @@ var target = {
     js_dest : 'assets/scripts'                                      // where to put minified js
 };
 
-/*******************************************************************************
-HTML TASKS
-*******************************************************************************/
+/* HTML TASKS */
 gulp.task('fileinclude', function() {
-    gulp.src('./html-templates/*.tpl.html')
-    .pipe(fileinclude({
+    return gulp.src(appFiles.html)
+    .pipe(plugins.fileInclude({
         prefix: '@@',
-        basepath : './html-templates/html-fragments/'
+        basepath : paths.html.fragments
     }))
-    .pipe(rename({
+    .pipe(plugins.rename({
         extname : ''
     }))
-    .pipe(rename({
-        extname : ".html"
+    .pipe(plugins.rename({
+        extname : '.html'
     }))
-    .pipe(prettify({indent_size: 4}))
-    .pipe(gulp.dest('./'));
+    .pipe(gulp.dest(paths.html.dest));
 });
 
 gulp.task('prettify', function() {
-    gulp.src('target.html.watch')
-    .pipe(prettify({indent_inner_html: true}))
-    .pipe(gulp.dest('target.html.dest'));
+    return gulp.src(watchAppFiles.html)
+    .pipe(plugins.prettify({indent_size: 4, indent_inner_html: true}))
+    .pipe(gulp.dest(paths.html.dest));
 });
 
-/*******************************************************************************
-SASS TASK
-*******************************************************************************/
+/* SASS TASK */
 
 gulp.task('sass', function() {
-    return gulp.src('target.sass.src')                           // get the files
-        .pipe(plumber())                                // make sure gulp keeps running on errors
-        .pipe(compass())								
-        //.pipe(sass())                                   // compile all sass
-        .pipe(autoprefixer(                             // complete css with correct vendor prefixes
-            'last 2 version',
-            '> 1%',
-            'ie 8',
-            'ie 9',
-            'ios 6',
-            'android 4'
-        ))
-        .pipe(minifycss())                              // minify css
-        .pipe(gulp.dest('target.sass.dest'))               // where to put the file
-        .pipe(notify({message: 'SCSS processed!'}));    // notify when done
+    return gulp.src(appFiles.styles)                           // get the files
+    .pipe(plugins.plumber())
+    .pipe(plugins.compass({
+            config_file: './config.rb',
+            // project: basePaths.src,
+            css: 'css',
+            sass: 'scss',
+            debug: true
+        }))						
+    .pipe(plugins.sass())
+    .pipe(plugins.autoprefixer('last 2 version', '> 1%', 'ie 8', 'ie 9', 'ios 6', 'android 4'))
+    //.pipe(plugins.minifyCss())
+    .pipe(gulp.dest(paths.styles.dest))
+    .pipe(plugins.notify({message: 'SCSS processed!'}));    // notify when done
 });
 
 gulp.task('compass', function() {
-    return gulp.src('target.sass.src')
-    return gulp.src('assets/scss/style.scss')
-        .pipe(compass({
-            config_file: 'config.rb',
-            sourcemap: true,
-            debug : true,
-            css: 'target.sass.dest',
-            sass: 'target.sass.src'
+    gulp.src(appFiles.styles)
+        .pipe(plugins.compass({
+            config_file: './config.rb',
+            // project: basePaths.src,
+            css: 'assets/css',
+            sass: 'assets/scss',
+            debug: true
         }))
-        .pipe(gulp.dest('target.sass.dest'))
-        .pipe(notify({ message: 'Compass processed!'}));     // notify when done
+        .pipe(gulp.dest(paths.styles.dest))
+        //.pipe(notify({ message: 'Compass processed!'}));     // notify when done
 });
 
-/*******************************************************************************
-JS TASKS
-*******************************************************************************/
+/* JS TASKS */
 
 // lint my custom js
 gulp.task('js-lint', function() {
-    gulp.src(target.js_lint_src)                        // get the files
-        .pipe(jshint())                                 // lint the files
-        .pipe(jshint.reporter(stylish))                 // present the results in a beautiful way
-});
-
-// minify all js files that should not be concatinated
-gulp.task('js-uglify', function() {
-    gulp.src(target.js_uglify_src)                      // get the files
-        .pipe(uglify())                                 // uglify the files
-        .pipe(rename(function(dir,base,ext){            // give the files a min suffix
-            var trunc = base.split('.')[0];
-            return trunc + '.min' + ext;
-        }))
-        .pipe(gulp.dest(target.js_dest))                // where to put the files
-        .pipe(notify({ message: 'JS processed!'}));     // notify when done
+    return gulp.src(appFiles.scripts)                        // get the files
+        .pipe(plugins.jshint())                                 // lint the files
+        .pipe(plugins.jshint.reporter(stylish))                 // present the results in a beautiful way
 });
 
 // minify & concatinate all other js
 gulp.task('js-concat', function() {
-    gulp.src(target.js_concat_src)                      // get the files
-        .pipe(uglify())                                 // uglify the files
-        .pipe(concat('scripts.min.js'))                 // concatinate to one file
-        .pipe(gulp.dest(target.js_dest))                // where to put the files
-        .pipe(notify({message: 'JS processed!'}));      // notify when done
+    return gulp.src(paths.scripts.concat)                      // get the files
+        .pipe(plugins.uglify())                                 // uglify the files
+        .pipe(plugins.concat('scripts.min.js'))                 // concatinate to one file
+        .pipe(gulp.dest(paths.scripts.dest))                // where to put the files
+        .pipe(plugins.notify({message: 'JS processed!'}));      // notify when done
 });
 
 
-/*******************************************************************************
-BROWSER SYNC
-*******************************************************************************/
+/* BROWSER SYNC */
 
 gulp.task('browser-sync', function() {
-    browserSync.init(['./assets/**/*.css', './assets/scripts/*.js', './**/*.html'], {        // files to inject
+    browserSync.init([watchAppFiles.styles, watchAppFiles.scripts, watchAppFiles.html], {        // files to inject
         server: {
             host: "local.dev",
             baseDir: "./"
@@ -158,26 +146,13 @@ gulp.task('browser-sync', function() {
 });
 
 
-/*******************************************************************************
-GULP TASKS
-*******************************************************************************/
-
-gulp.task('default', function() {
-    gulp.run('fileinclude', 'prettify', 'compass', 'js-lint', 'js-uglify', 'js-concat', 'browser-sync');
-    gulp.watch('./assets/scss/**/*.scss', function() {
-        gulp.run('compass');
-    });
-    gulp.watch('./**/*.html', function() {
-        gulp.run('fileinclude');
-        //gulp.run('prettify');
-    });
-    gulp.watch(target.js_lint_src, function() {
-        gulp.run('js-lint');
-    });
-    gulp.watch(target.js_minify_src, function() {
-        gulp.run('js-uglify');
-    });
-    gulp.watch(target.js_concat_src, function() {
-        gulp.run('js-concat');
-    });
+/* GULP TASKS */
+gulp.task('watch', function (){
+    gulp.watch(appFiles.styles, ['sass']);
+    gulp.watch([watchAppFiles.html, appFiles.html], ['fileinclude', 'prettify']);
+    gulp.watch(watchAppFiles.scripts, ['js-lint', 'js-concat']);
 });
+
+gulp.task('default', ['watch', 'fileinclude', 'prettify', 'sass', 'js-concat', 'browser-sync']);
+
+
