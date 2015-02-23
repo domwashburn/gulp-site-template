@@ -2,7 +2,7 @@
 
 var gulp = require('gulp'),
     stylish = require('jshint-stylish'),
-    compass = require('compass'),
+    //compass = require('compass'),
     browserSync = require('browser-sync');
 
 var plugins = require('gulp-load-plugins')(); 
@@ -11,8 +11,8 @@ var plugins = require('gulp-load-plugins')();
 /* FILE DESTINATIONS (RELATIVE TO ASSSETS FOLDER) */
 var basePaths = {
     root: './',
-    src: './assets/',
-    dest: './assets/'
+    src: 'assets/',
+    dest: 'assets/'
 };
 var paths = {
     html: {
@@ -36,7 +36,7 @@ var paths = {
 };
 var appFiles = {
     html: paths.html.src + '*.tpl.html',
-    styles: paths.styles.src + '**/**/*.scss',
+    styles: paths.styles.src + '**/**/**/*.scss',
     scripts: [paths.scripts.src + '**/*.js']
 };
 var watchAppFiles = {
@@ -89,30 +89,15 @@ gulp.task('sass', function() {
     return gulp.src(appFiles.styles)                           // get the files
     .pipe(plugins.plumber())
     .pipe(plugins.compass({
-            config_file: 'config.rb',
-            // project: basePaths.src,
-            css: 'css',
-            sass: 'scss',
-            debug: true
-        }))						
+        config_file: 'config.rb',
+        css: 'assets/css',
+        sass: 'assets/scss',
+    }))				
     .pipe(plugins.sass())
     .pipe(plugins.autoprefixer('last 2 version', '> 1%', 'ie 8', 'ie 9', 'ios 6', 'android 4'))
     //.pipe(plugins.minifyCss())
     .pipe(gulp.dest(paths.styles.dest))
     .pipe(plugins.notify({message: 'SCSS processed!'}));    // notify when done
-});
-
-gulp.task('compass', function() {
-    gulp.src(appFiles.styles)
-        .pipe(plugins.compass({
-            config_file: './config.rb',
-            // project: basePaths.src,
-            css: 'assets/css',
-            sass: 'assets/scss',
-            debug: true
-        }))
-        .pipe(gulp.dest(paths.styles.dest))
-        //.pipe(notify({ message: 'Compass processed!'}));     // notify when done
 });
 
 /* JS TASKS */
