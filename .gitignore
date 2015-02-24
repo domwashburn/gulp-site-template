@@ -26,3 +26,5 @@ _DEV
 *.sublime-project
 *.sublime-workspace 
 plunkr-edit.html
+.sublime-gulp.cache
+sublime-gulp.log
