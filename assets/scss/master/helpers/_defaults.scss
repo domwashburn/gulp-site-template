@@ -1,0 +1,24 @@
+// Breakpoint Variables
+
+
+// Masonry Dimension Variables
+$masonry-width: rem(960) !default;
+$col-width: $masonry-width/4 !default;
+$col-margin: 0 !default;
+
+// Site Colors
+$primary-color: #f6871f !default;
+	$primary-color--dark: #532a05 !default;
+$secondary-color: #34d9e8 !default;
+//$accent-color-1:  !default;
+//$accent-color-2:  !default;
+$background-color: #fcfcfc !default;
+$light-text-color: #fcfcfc !default;
+$primary-text-color: #3d3d3d !default;
+
+// Button Size Map 
+$btn-size-map: (
+  sm : 16,
+  med : 20,
+  lrg : 24
+) !default;
