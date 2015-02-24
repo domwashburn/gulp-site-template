@@ -311,7 +311,7 @@
 }
 }
 
-@mixin btn ($class, $color, $hover-text: $light-text-color) {
+ @mixin btn--old ($class, $color, $hover-text: $light-text-color) {
     .#{"btn--" + $class } {
         border-color: $color;
         color: $color;
@@ -332,6 +332,48 @@
             }
         }
     }
+
+@mixin btn ($class, $color, $text-color: $color, $border-color: $color, $border-size: 1px, $display: inline-block, $hover-text: null, $text-decoration: none, $text-transform: null, $radius: null) {
+  .btn {
+    border: $border-size solid;
+    border-radius: $radius + px;
+    border-radius: rem($radius);
+    box-sizing: border-box;
+    display: $display;
+      text-decoration: $text-decoration;
+      text-transform: $text-transform;
+      &:hover, &:active {
+        text-decoration: $text-decoration;
+    }
+  }
+  
+  .btn--#{$class} {
+      border-color: $border-color;
+      color: $text-color;
+      &:hover {
+          border-color: darken($border-color , 10%);
+          background-color: lighten($border-color, 25%);
+          color: darken($text-color , 10%);
+      }
+      &:active {
+          border-color: darken( $text-color , 15% );
+      }
+  }
+  
+  @each $btn-size, $btn-font-size in $btn-size-map {
+    .btn--#{$btn-size}, {
+        @extend .btn;
+        font-size: $btn-font-size + px;
+        font-size: rem($btn-font-size);
+        padding: ($btn-font-size*.5) + px ($btn-font-size*.75) + px;
+        padding: rem(($btn-font-size*.5)) rem(($btn-font-size*.75));
+    }
+    .btn--#{$class}--#{$btn-size} {
+        @extend .btn--#{$btn-size}, .btn--#{$class};
+    }
+  }
+}
+
 
 // mobile tap highlight
 @mixin tap-highlight ($color: rgba(0,0,0,0)) {

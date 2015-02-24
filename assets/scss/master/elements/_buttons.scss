@@ -1,0 +1,32 @@
+//Button Map
+$btn-size-map: (
+  sm : 16,
+  med : 20,
+  lrg : 24
+);
+
+// .btn {
+// 	border: 2px solid;
+// 	border-radius: .75rem;
+// 	box-sizing: border-box;
+// 	display: inline-block;
+// 	text-decoration: none;
+// 	text-transform: lowercase;
+// 	&:hover, &:active {
+// 		text-decoration: none;
+// 	}
+// }
+
+// .btn--full {
+// 	@extend .btn;
+// 	display: block;
+// 	text-align: center;
+// 	width: 100%;
+// }
+
+// @include btn-sizing("btn--sm", 16);
+// @include btn-sizing("btn--med", 19.2);
+// @include btn-sizing("btn--lrg", 23.04);
+
+@include btn(primary, $primary-color, $radius: 3);
+@include btn(secondary, #45fe00, $radius: 5);
