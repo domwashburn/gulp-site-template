@@ -21,4 +21,4 @@ A comprehensive site template for development using Gulp.js as a task runner
  - add versioning to the gulp file 
  - clean out unused packages from the packages.json
  - add support for CoffeeScript
- - integrate HUB
+ - ~~integrate HUB~~
