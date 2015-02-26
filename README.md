@@ -1,4 +1,4 @@
-# gulp-site-template
+# Susy Grid Test
 A comprehensive site template for development using Gulp.js as a task runner
 
 ## Features
@@ -13,12 +13,3 @@ A comprehensive site template for development using Gulp.js as a task runner
 
 #### Todo's
  - create base susy grid structure
- - clean up the mixins
- - clean up the functions
- - consider a development and public sub directories to clean up the whole repositories structure
- - fix and or remove the HTML templating feature
- - create a gem file
- - add versioning to the gulp file 
- - clean out unused packages from the packages.json
- - add support for CoffeeScript
- - ~~integrate HUB~~
